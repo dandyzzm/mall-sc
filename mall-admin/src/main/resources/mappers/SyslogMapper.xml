@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dandy.mall.dao.SyslogMapper" >
+  <resultMap id="BaseResultMap" type="com.dandy.mall.model.Syslog" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="user_info" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="target_file_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="request_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="request_uri" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="local_addr" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="local_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="remote_addr" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="remote_host" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="remote_port" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, user_info, target_file_name, url, request_url, request_uri, local_addr, 
+    local_name, remote_addr, remote_host, remote_port, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mmall_syslog
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mmall_syslog
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dandy.mall.model.Syslog" >
+    insert into mmall_syslog (id, user_id, user_info, 
+      target_file_name, url, request_url, 
+      request_uri, local_addr, local_name, 
+      remote_addr, remote_host, remote_port, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{userInfo,jdbcType=VARCHAR}, 
+      #{targetFileName,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{requestUrl,jdbcType=VARCHAR}, 
+      #{requestUri,jdbcType=VARCHAR}, #{localAddr,jdbcType=VARCHAR}, #{localName,jdbcType=VARCHAR}, 
+      #{remoteAddr,jdbcType=VARCHAR}, #{remoteHost,jdbcType=VARCHAR}, #{remotePort,jdbcType=INTEGER}, 
+      now(), now())
+  </insert>
+  <insert id="insertSelective" parameterType="com.dandy.mall.model.Syslog" >
+    insert into mmall_syslog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userInfo != null" >
+        user_info,
+      </if>
+      <if test="targetFileName != null" >
+        target_file_name,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="requestUrl != null" >
+        request_url,
+      </if>
+      <if test="requestUri != null" >
+        request_uri,
+      </if>
+      <if test="localAddr != null" >
+        local_addr,
+      </if>
+      <if test="localName != null" >
+        local_name,
+      </if>
+      <if test="remoteAddr != null" >
+        remote_addr,
+      </if>
+      <if test="remoteHost != null" >
+        remote_host,
+      </if>
+      <if test="remotePort != null" >
+        remote_port,
+      </if>
+      <if test="createTime != null" >
+        now(),
+      </if>
+      <if test="updateTime != null" >
+        now(),
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userInfo != null" >
+        #{userInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="targetFileName != null" >
+        #{targetFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="requestUrl != null" >
+        #{requestUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="requestUri != null" >
+        #{requestUri,jdbcType=VARCHAR},
+      </if>
+      <if test="localAddr != null" >
+        #{localAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="localName != null" >
+        #{localName,jdbcType=VARCHAR},
+      </if>
+      <if test="remoteAddr != null" >
+        #{remoteAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="remoteHost != null" >
+        #{remoteHost,jdbcType=VARCHAR},
+      </if>
+      <if test="remotePort != null" >
+        #{remotePort,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        now(),
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dandy.mall.model.Syslog" >
+    update mmall_syslog
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userInfo != null" >
+        user_info = #{userInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="targetFileName != null" >
+        target_file_name = #{targetFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="requestUrl != null" >
+        request_url = #{requestUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="requestUri != null" >
+        request_uri = #{requestUri,jdbcType=VARCHAR},
+      </if>
+      <if test="localAddr != null" >
+        local_addr = #{localAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="localName != null" >
+        local_name = #{localName,jdbcType=VARCHAR},
+      </if>
+      <if test="remoteAddr != null" >
+        remote_addr = #{remoteAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="remoteHost != null" >
+        remote_host = #{remoteHost,jdbcType=VARCHAR},
+      </if>
+      <if test="remotePort != null" >
+        remote_port = #{remotePort,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = now(),
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dandy.mall.model.Syslog" >
+    update mmall_syslog
+    set user_id = #{userId,jdbcType=INTEGER},
+      user_info = #{userInfo,jdbcType=VARCHAR},
+      target_file_name = #{targetFileName,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      request_url = #{requestUrl,jdbcType=VARCHAR},
+      request_uri = #{requestUri,jdbcType=VARCHAR},
+      local_addr = #{localAddr,jdbcType=VARCHAR},
+      local_name = #{localName,jdbcType=VARCHAR},
+      remote_addr = #{remoteAddr,jdbcType=VARCHAR},
+      remote_host = #{remoteHost,jdbcType=VARCHAR},
+      remote_port = #{remotePort,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
