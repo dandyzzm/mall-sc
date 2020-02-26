@@ -59,7 +59,22 @@
     </dependencies>
     <build>
         <resources>
-
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <includes>
+                    <include>**/*.yml</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+            <!--对加载外部第三方依赖包的处理-->
+            <resource>
+                <directory>${project.basedir}/src/main/webapp/WEB-INF/lib</directory>
+                <targetPath>BOOT-INF/lib/</targetPath>
+                <includes>
+                    <include>**/*.jar</include>
+                </includes>
+            </resource>
 
         </resources>
         <plugins>
@@ -104,22 +119,7 @@
                             <directory>${project.build.directory}</directory>
                             <include>${project.build.finalName}.jar</include>
                         </resource>
-                        <resource>
-                            <directory>${project.basedir}/src/main/resources</directory>
-                            <includes>
-                                <include>**/*.yml</include>
-                                <include>**/*.xml</include>
-                                <include>**/*.properties</include>
-                            </includes>
-                        </resource>
-                            <!--对加载外部第三方依赖包的处理-->
-                        <resource>
-                            <directory>${project.basedir}/src/main/webapp/WEB-INF/lib</directory>
-                            <targetPath>BOOT-INF/lib/</targetPath>
-                            <includes>
-                                <include>**/*.jar</include>
-                            </includes>
-                        </resource>
+
                     </resources>
                 </configuration>
             </plugin>
