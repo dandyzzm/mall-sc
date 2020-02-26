@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: mall-admin
   cloud:
     config:
       profile: dev #启用环境名称

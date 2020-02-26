@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: mall-admin
   cloud:
     config:
       profile: prod #启用环境名称
@@ -10,6 +12,6 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://mall-registry:8001/eureka/
+      defaultZone: http://192.168.180.128:8001/eureka/
   instance:
     prefer-ip-address: true
