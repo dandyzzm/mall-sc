@@ -4,7 +4,7 @@ spring:
   application:
     name: mall-admin
   datasource:
-    url: jdbc:mysql://db:3306/mmall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://192.168.180.128:3306/mmall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: reader
     password: 123456
     druid:
@@ -17,7 +17,7 @@ spring:
         login-username: druid
         login-password: druid
   redis:
-    host: redis # Redis服务器地址
+    host: 192.168.180.128 # Redis服务器地址
     database: 0 # Redis数据库索引（默认为0）
     port: 6379 # Redis服务器连接端口
     password: #不设置密码
