@@ -1,14 +1,39 @@
+server:
+  port: 8180
 spring:
   application:
     name: mall-admin
-  cloud:
-    config:
-      profile: prod #启用环境名称
-      label: master #分支名称
-      name: admin #配置文件名称
-      discovery:
-        enabled: true
-        service-id: mall-config
+  datasource:
+    url: jdbc:mysql://db:3306/mmall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: reader
+    password: 123456
+    druid:
+      initial-size: 5 #连接池初始化大小
+      min-idle: 10 #最小空闲连接数
+      max-active: 20 #最大连接数
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
+      stat-view-servlet: #访问监控网页的登录用户名和密码
+        login-username: druid
+        login-password: druid
+  redis:
+    host: redis # Redis服务器地址
+    database: 0 # Redis数据库索引（默认为0）
+    port: 6379 # Redis服务器连接端口
+    password: #不设置密码
+logging:
+  path: /var/logs #配置日志生成路径
+#spring:
+#  application:
+#    name: mall-admin
+#  cloud:
+#    config:
+#      profile: prod #启用环境名称
+#      label: master #分支名称
+#      name: admin #配置文件名称
+#      discovery:
+#        enabled: true
+#        service-id: mall-config
 eureka:
   client:
     service-url:
